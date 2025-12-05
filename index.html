@@ -8,14 +8,44 @@
 </head>
 <body>
     <header>
-        <h1>El Tio Pelis</h1>
+        <nav class="navbar">
+            <h1 class="logo">El Tio Pelis</h1>
+            <div class="nav-links">
+                <a href="#" id="nav-home" class="active">Inicio</a>
+                <a href="#" id="nav-movies">Películas</a>
+                <a href="#" id="nav-tvshows">Series</a>
+            </div>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Buscar películas o series...">
+                <button id="search-button">Buscar</button>
+            </div>
+        </nav>
     </header>
 
     <main>
-        <div id="movie-list">
-            <!-- El contenido se generará dinámicamente con JavaScript -->
-        </div>
-    </main>
+        <section id="home-section" class="media-section active">
+            <h2>Últimos Lanzamientos</h2>
+            <div id="movie-list" class="media-grid">
+                <!-- El contenido se generará dinámicamente con JavaScript -->
+                <div class="loading-spinner"></div>
+            </div>
+        </section>
+
+        <section id="movies-section" class="media-section">
+            <h2>Películas</h2>
+            <div id="movies-grid" class="media-grid">
+                <!-- Contenido de películas se cargará aquí -->
+                <div class="loading-spinner"></div>
+            </div>
+        </section>
+
+        <section id="tvshows-section" class="media-section">
+            <h2>Series de TV</h2>
+            <div id="tvshows-grid" class="media-grid">
+                <!-- Contenido de series se cargará aquí -->
+                <div class="loading-spinner"></div>
+            </div>
+        </section>
 
     <footer>
         <p>&copy; 2025 El Tio Pelis. Todos los derechos reservados.</p>
@@ -31,6 +61,18 @@
             <p>Por favor, inicia sesión o regístrate para continuar.</p>
             <button id="login-btn" class="btn">Iniciar Sesión</button>
             <button id="register-btn" class="btn">Registrarse</button>
+        </div>
+    </div>
+
+    <!-- Modal de Detalles de Película/Serie -->
+    <div id="details-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="close-details-modal">&times;</span>
+            <h2 id="detail-title"></h2>
+            <p id="detail-year"></p>
+            <p id="detail-director-seasons"></p>
+            <button class="btn">Reproducir</button>
+            <button class="btn">Añadir a Favoritos</button>
         </div>
     </div>
 </body>

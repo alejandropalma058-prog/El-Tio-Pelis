@@ -73,6 +73,364 @@ footer {
     font-size: 0.9rem;
 }
 
+/* Estilos del encabezado y navegación */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1a1a1a;
+    padding: 1rem 2rem;
+    border-bottom: 2px solid #333;
+}
+
+.logo {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #007bff;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background-color: #007bff;
+    transition: width 0.3s ease;
+}
+
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+#search-input {
+    padding: 8px 12px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    font-size: 1rem;
+    margin-right: 10px;
+    width: 200px;
+}
+
+#search-button {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+}
+
+#search-button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos de las secciones de medios */
+main {
+    padding: 0; /* Remove padding from main as sections will handle it */
+    display: block; /* Allow sections to manage their own layout */
+}
+
+.media-section {
+    display: none; /* Oculto por defecto, se mostrará con JS */
+    padding: 3rem 2rem; /* Adjusted padding for sections */
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto; /* Center sections */
+}
+
+.media-section.active {
+    display: block; /* Sección activa */
+}
+
+.media-section h2 {
+    font-size: 2.8rem; /* Larger heading for sections */
+    color: #ffffff;
+    margin-bottom: 2rem;
+    text-align: center;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+}
+
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Adjusted minmax for more cards */
+    gap: 1.8rem; /* Slightly reduced gap */
+    width: 100%;
+}
+
+.movie-card {
+    background-color: #1e1e1e;
+    border: none; /* Remove border for cleaner look */
+    border-radius: 12px; /* More rounded corners */
+    padding: 1.2rem; /* Slightly less padding */
+    text-align: left;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Initial subtle shadow */
+}
+
+.movie-card:hover {
+    transform: translateY(-8px); /* More pronounced lift */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6); /* Stronger shadow on hover */
+    background-color: #282828; /* Slightly lighter background on hover */
+}
+
+.movie-card h3 {
+    margin-top: 0.5rem; /* Adjusted margin */
+    margin-bottom: 0.5rem;
+    color: #f0f0f0;
+    font-size: 1.2rem;
+}
+
+.movie-card p {
+    color: #b0b0b0; /* Lighter text for details */
+    font-size: 0.85rem; /* Slightly smaller font */
+    line-height: 1.5;
+}
+
+/* Footer (no changes for now, keeping existing styles) */
+
+/* Estilos para el modal */
+
+/* Estilos del encabezado y navegación */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1a1a1a;
+    padding: 1rem 2rem;
+    border-bottom: 2px solid #333;
+}
+
+.logo {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+.nav-links a {
+    color: #aaa;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1.1rem;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #007bff;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+#search-input {
+    padding: 8px 12px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    font-size: 1rem;
+    margin-right: 10px;
+}
+
+#search-button {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+}
+
+#search-button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos de las secciones de medios */
+.media-section {
+    display: none; /* Oculto por defecto, se mostrará con JS */
+    padding: 2rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.media-section.active {
+    display: block; /* Sección activa */
+}
+
+.media-section h2 {
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    width: 100%;
+}
+
+/* Reajuste de .movie-card para que se adapte al nuevo .media-grid */
+.movie-card {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: left;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer; /* Añadido para indicar que es clickeable */
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilos para el modal */
+
+/* Estilos del encabezado y navegación */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1a1a1a;
+    padding: 1rem 2rem;
+    border-bottom: 2px solid #333;
+}
+
+.logo {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+.nav-links a {
+    color: #aaa;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1.1rem;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #007bff;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+#search-input {
+    padding: 8px 12px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    font-size: 1rem;
+    margin-right: 10px;
+}
+
+#search-button {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+}
+
+#search-button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos de las secciones de medios */
+.media-section {
+    display: none; /* Oculto por defecto, se mostrará con JS */
+    padding: 2rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.media-section.active {
+    display: block; /* Sección activa */
+}
+
+.media-section h2 {
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    width: 100%;
+}
+
+/* Reajuste de .movie-card para que se adapte al nuevo .media-grid */
+.movie-card {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: left;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer; /* Añadido para indicar que es clickeable */
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
 /* Estilos para el modal */
 .modal {
     display: none; /* Oculto por defecto */
@@ -147,4 +505,60 @@ footer {
     color: #bbb;
     text-decoration: none;
     cursor: pointer;
+}
+
+/* Estilos específicos para el modal de detalles si fuera necesario,
+   pero de momento reusa los estilos generales de .modal y .modal-content */
+
+/* Estilos para el icono de favorito */
+.favorite-icon {
+    cursor: pointer;
+    color: #555; /* Color por defecto (no favorito) */
+    font-size: 1.5rem;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.favorite-icon:hover {
+    transform: scale(1.2);
+}
+
+.favorite-icon.favorited {
+    color: #ffcc00; /* Color cuando es favorito */
+}
+
+.movie-card {
+    position: relative; /* Necesario para posicionar el icono de favorito */
+}
+
+/* Estilos para el spinner de carga */
+.loading-spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #007bff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 50px auto; /* Centrar el spinner */
+    display: none; /* Oculto por defecto */
+}
+
+.loading-spinner.active {
+    display: block;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Ocultar el grid cuando el spinner está activo en la misma sección */
+.media-section.loading .media-grid {
+    display: none;
+}
+
+.media-section .loading-spinner {
+    grid-column: 1 / -1; /* Centrar el spinner en el grid */
 }
