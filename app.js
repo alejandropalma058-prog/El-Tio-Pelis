@@ -416,6 +416,8 @@ class App {
 // Punto de entrada de la aplicación
 document.addEventListener('DOMContentLoaded', () => {
     const authModal = document.getElementById('auth-modal');
+    const usernameInput = document.getElementById('username-input');
+    const passwordInput = document.getElementById('password-input');
     const loginBtn = document.getElementById('login-btn');
     const registerBtn = document.getElementById('register-btn');
     const closeAuthModalBtn = document.getElementById('close-auth-modal');
@@ -440,8 +442,14 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('isNewUser', 'false'); // Marcar como usuario no nuevo
     };
 
-    loginBtn.addEventListener('click', hideModal);
-    registerBtn.addEventListener('click', hideModal);
+    loginBtn.addEventListener('click', () => {
+        console.log('Intento de inicio de sesión con:', usernameInput.value, passwordInput.value);
+        hideModal();
+    });
+    registerBtn.addEventListener('click', () => {
+        console.log('Intento de registro con:', usernameInput.value, passwordInput.value);
+        hideModal();
+    });
     closeAuthModalBtn.addEventListener('click', hideModal);
 
     // Aquí es donde "conectamos" las dependencias.
