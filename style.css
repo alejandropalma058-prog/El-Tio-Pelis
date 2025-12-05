@@ -90,6 +90,7 @@ footer {
 }
 
 .modal-content {
+    position: relative; /* Añadido para que el botón de cerrar se posicione respecto a este */
     background-color: #1e1e1e;
     margin: auto;
     padding: 30px;
@@ -136,8 +137,9 @@ footer {
     font-weight: bold;
     position: absolute;
     top: 10px;
-    right: 20px;
+    right: 15px; /* Ajustado para moverlo más a la esquina */
     cursor: pointer;
+    line-height: 1; /* Para alinear verticalmente la 'x' */
 }
 
 .close-button:hover,
