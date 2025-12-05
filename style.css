@@ -72,3 +72,60 @@ footer {
     border-top: 1px solid #333;
     font-size: 0.9rem;
 }
+
+/* Estilos para el modal */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Permanece en su lugar */
+    z-index: 1000; /* Se superpone a todo */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Alto completo */
+    overflow: auto; /* Habilitar scroll si es necesario */
+    background-color: rgba(0,0,0,0.7); /* Fondo semi-transparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #1e1e1e;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #333;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+}
+
+.modal-content h2 {
+    color: #ffffff;
+    margin-top: 0;
+    font-size: 2rem;
+}
+
+.modal-content p {
+    color: #aaa;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+}
+
+.btn {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin: 0 10px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}

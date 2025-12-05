@@ -122,6 +122,25 @@ class App {
 
 // Punto de entrada de la aplicación
 document.addEventListener('DOMContentLoaded', () => {
+    const authModal = document.getElementById('auth-modal');
+    const loginBtn = document.getElementById('login-btn');
+    const registerBtn = document.getElementById('register-btn');
+
+    // Comprobar si es un usuario nuevo
+    const isNewUser = localStorage.getItem('isNewUser') === null;
+
+    if (isNewUser) {
+        authModal.style.display = 'flex'; // Mostrar el modal
+    }
+
+    const hideModal = () => {
+        authModal.style.display = 'none';
+        localStorage.setItem('isNewUser', 'false'); // Marcar como usuario no nuevo
+    };
+
+    loginBtn.addEventListener('click', hideModal);
+    registerBtn.addEventListener('click', hideModal);
+
     // Aquí es donde "conectamos" las dependencias.
     // La clase App no sabe que está usando 'mediaFetcher', solo que es 'algo' que puede obtener datos.
     const app = new App(mediaFetcher, ui);
