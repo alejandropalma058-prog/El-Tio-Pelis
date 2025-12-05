@@ -415,6 +415,35 @@ class App {
 
 // Punto de entrada de la aplicación
 document.addEventListener('DOMContentLoaded', () => {
+    const authModal = document.getElementById('auth-modal');
+    const loginBtn = document.getElementById('login-btn');
+    const registerBtn = document.getElementById('register-btn');
+    const closeAuthModalBtn = document.getElementById('close-auth-modal');
+
+    // Manejar el cierre del modal de detalles también
+    const detailsModal = document.getElementById('details-modal');
+    const closeDetailsModalBtn = document.getElementById('close-details-modal');
+
+    closeDetailsModalBtn.addEventListener('click', () => {
+        detailsModal.style.display = 'none';
+    });
+
+    // Comprobar si es un usuario nuevo
+    const isNewUser = localStorage.getItem('isNewUser') === null;
+
+    if (isNewUser) {
+        authModal.style.display = 'flex'; // Mostrar el modal
+    }
+
+    const hideModal = () => {
+        authModal.style.display = 'none';
+        localStorage.setItem('isNewUser', 'false'); // Marcar como usuario no nuevo
+    };
+
+    loginBtn.addEventListener('click', hideModal);
+    registerBtn.addEventListener('click', hideModal);
+    closeAuthModalBtn.addEventListener('click', hideModal);
+
     // Aquí es donde "conectamos" las dependencias.
     // La clase App no sabe que está usando 'mediaFetcher', solo que es 'algo' que puede obtener datos.
     const app = new App(mediaFetcher, ui);
