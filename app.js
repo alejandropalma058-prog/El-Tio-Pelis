@@ -48,52 +48,6 @@ const ui = (() => {
         });
     };
 
-    const detailsModal = document.getElementById('details-modal');
-    const closeDetailsModalBtn = document.getElementById('close-details-modal');
-    const detailTitle = document.getElementById('detail-title');
-    const detailYear = document.getElementById('detail-year');
-    const detailDirectorSeasons = document.getElementById('detail-director-seasons');
-    const detailRating = document.getElementById('detail-rating');
-    const detailSynopsis = document.getElementById('detail-synopsis');
-
-
-    const showDetailsModal = (media) => {
-        detailTitle.textContent = media.title;
-        detailYear.textContent = `Año: ${media.year}`;
-        if (media instanceof Movie) {
-            detailDirectorSeasons.textContent = `Director: ${media.director}`;
-        } else if (media instanceof TVShow) {
-            detailDirectorSeasons.textContent = `Temporadas: ${media.seasons}`;
-        } else {
-            detailDirectorSeasons.textContent = '';
-        }
-        detailRating.textContent = `Calificación: ${media.rating}`;
-        detailSynopsis.textContent = media.synopsis;
-        detailsModal.classList.add('active'); // Usar la clase 'active' para mostrar el modal
-    };
-
-    const hideDetailsModal = () => {
-        detailsModal.classList.remove('active'); // Usar la clase 'active' para ocultar el modal
-    };
-
-    closeDetailsModalBtn.addEventListener('click', hideDetailsModal);
-
-    // Añadir funcionalidad al botón "Reproducir" en el modal de detalles
-    const detailPlayBtn = detailsModal.querySelector('.btn:first-of-type'); // Asumiendo que es el primer botón
-    detailPlayBtn.addEventListener('click', () => {
-        if (currentMediaInModal) {
-            alert(`Reproduciendo: ${currentMediaInModal.title}`);
-            hideDetailsModal();
-        }
-    });
-
-    return {
-        renderMovies,
-        showDetailsModal,
-        hideDetailsModal,
-    };
-
-    // Funciones y variables para el manejo de favoritos dentro del módulo ui
     const toggleFavorite = (media, iconElement) => {
         if (mediaFetcher.isFavorite(media.id)) {
             mediaFetcher.removeFavorite(media.id);
@@ -115,41 +69,8 @@ const ui = (() => {
         }
     };
 
-    const detailFavoriteBtn = detailsModal.querySelector('.btn:last-of-type');
-    let currentMediaInModal = null;
-
-    const updateFavoriteButton = (mediaId) => {
-        if (mediaFetcher.isFavorite(mediaId)) {
-            detailFavoriteBtn.textContent = 'Eliminar de Favoritos';
-            detailFavoriteBtn.classList.add('remove-favorite');
-        } else {
-            detailFavoriteBtn.textContent = 'Añadir a Favoritos';
-            detailFavoriteBtn.classList.remove('remove-favorite');
-        }
-    };
-
-    const originalShowDetailsModal = showDetailsModal;
-    showDetailsModal = (media) => {
-        originalShowDetailsModal(media);
-        currentMediaInModal = media;
-        updateFavoriteButton(media.id);
-    };
-
-    detailFavoriteBtn.addEventListener('click', () => {
-        if (currentMediaInModal) {
-            toggleFavorite(currentMediaInModal, detailFavoriteBtn);
-            updateFavoriteButton(currentMediaInModal.id);
-            const cardIcon = document.querySelector(`.movie-card[data-id="${currentMediaInModal.id}"] .favorite-icon`);
-            if (cardIcon) {
-                cardIcon.classList.toggle('favorited', mediaFetcher.isFavorite(currentMediaInModal.id));
-            }
-        }
-    });
-
     return {
         renderMovies,
-        showDetailsModal,
-        hideDetailsModal,
         toggleFavorite,
     };
 })();
