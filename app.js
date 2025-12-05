@@ -53,6 +53,8 @@ const ui = (() => {
     const detailTitle = document.getElementById('detail-title');
     const detailYear = document.getElementById('detail-year');
     const detailDirectorSeasons = document.getElementById('detail-director-seasons');
+    const detailRating = document.getElementById('detail-rating');
+    const detailSynopsis = document.getElementById('detail-synopsis');
 
 
     const showDetailsModal = (media) => {
@@ -65,6 +67,8 @@ const ui = (() => {
         } else {
             detailDirectorSeasons.textContent = '';
         }
+        detailRating.textContent = `Calificación: ${media.rating}`;
+        detailSynopsis.textContent = media.synopsis;
         detailsModal.style.display = 'flex';
     };
 
@@ -74,11 +78,19 @@ const ui = (() => {
 
     closeDetailsModalBtn.addEventListener('click', hideDetailsModal);
 
+    // Añadir funcionalidad al botón "Reproducir" en el modal de detalles
+    const detailPlayBtn = detailsModal.querySelector('.btn:first-of-type'); // Asumiendo que es el primer botón
+    detailPlayBtn.addEventListener('click', () => {
+        if (currentMediaInModal) {
+            alert(`Reproduciendo: ${currentMediaInModal.title}`);
+            hideDetailsModal();
+        }
+    });
 
     return {
         renderMovies,
-        showDetailsModal, // Exportar para uso externo si es necesario
-        hideDetailsModal, // Exportar para uso externo si es necesario
+        showDetailsModal,
+        hideDetailsModal,
     };
 
     // Funciones y variables para el manejo de favoritos dentro del módulo ui
@@ -177,10 +189,12 @@ const navigation = (() => {
 // --- Principio de Sustitución de Liskov (L) ---
 // Clase base "Media"
 class Media {
-    constructor(title, year) {
-        this.id = `${title.replace(/\s/g, '-')}-${year}`; // Generar un ID único simple
+    constructor(title, year, synopsis = 'Sin sinopsis disponible.', rating = 'N/A') {
+        this.id = `${title.replace(/\s/g, '-')}-${year}`;
         this.title = title;
         this.year = year;
+        this.synopsis = synopsis;
+        this.rating = rating;
     }
 
     // Método común que las subclases deben implementar
@@ -191,8 +205,8 @@ class Media {
 
 // Subclase "Movie"
 class Movie extends Media {
-    constructor(title, director, year) {
-        super(title, year);
+    constructor(title, director, year, synopsis, rating) {
+        super(title, year, synopsis, rating);
         this.director = director;
     }
 
@@ -203,8 +217,8 @@ class Movie extends Media {
 
 // Subclase "TVShow"
 class TVShow extends Media {
-    constructor(title, seasons, year) {
-        super(title, year);
+    constructor(title, seasons, year, synopsis, rating) {
+        super(title, year, synopsis, rating);
         this.seasons = seasons;
     }
 
@@ -220,18 +234,18 @@ class TVShow extends Media {
 
 const mediaFetcher = (() => {
     const movieItems = [
-        new Movie('El Padrino', 'Francis Ford Coppola', 1972),
-        new Movie('Pulp Fiction', 'Quentin Tarantino', 1994),
-        new Movie('El origen', 'Christopher Nolan', 2010),
-        new Movie('Interstellar', 'Christopher Nolan', 2014),
-        new Movie('Parasite', 'Bong Joon-ho', 2019)
+        new Movie('El Padrino', 'Francis Ford Coppola', 1972, 'La épica historia de la familia Corleone y su imperio criminal.', '9.2/10'),
+        new Movie('Pulp Fiction', 'Quentin Tarantino', 1994, 'Las vidas de dos sicarios, un boxeador, la esposa de un gánster y dos ladrones se entrelazan en cuatro historias de violencia y redención.', '8.9/10'),
+        new Movie('El origen', 'Christopher Nolan', 2010, 'Un ladrón que roba secretos corporativos a través de la tecnología de compartir sueños.', '8.8/10'),
+        new Movie('Interstellar', 'Christopher Nolan', 2014, 'Un equipo de exploradores viaja a través de un agujero de gusano en el espacio en un intento de asegurar la supervivencia de la humanidad.', '8.6/10'),
+        new Movie('Parasite', 'Bong Joon-ho', 2019, 'Una familia pobre se las arregla para infiltrarse en la vida de una familia rica, con consecuencias inesperadas.', '8.5/10')
     ];
 
     const tvShowItems = [
-        new TVShow('Breaking Bad', 5, 2008),
-        new TVShow('Game of Thrones', 8, 2011),
-        new TVShow('Stranger Things', 4, 2016),
-        new TVShow('The Mandalorian', 3, 2019)
+        new TVShow('Breaking Bad', 5, 2008, 'Un profesor de química de secundaria con cáncer terminal se asocia con un antiguo alumno para asegurar el futuro financiero de su familia fabricando y vendiendo metanfetamina.', '9.5/10'),
+        new TVShow('Game of Thrones', 8, 2011, 'Nueve familias nobles luchan por el control de la tierra mítica de Westeros, mientras una antigua amenaza regresa.', '9.3/10'),
+        new TVShow('Stranger Things', 4, 2016, 'Un grupo de niños y adolescentes se enfrentan a fuerzas sobrenaturales y experimentos gubernamentales secretos.', '8.7/10'),
+        new TVShow('The Mandalorian', 3, 2019, 'Un cazarrecompensas solitario viaja por los confines exteriores de la galaxia, lejos de la autoridad de la Nueva República.', '8.7/10')
     ];
 
     const getMovies = (targetElementId = null) => {
