@@ -69,11 +69,11 @@ const ui = (() => {
         }
         detailRating.textContent = `Calificación: ${media.rating}`;
         detailSynopsis.textContent = media.synopsis;
-        detailsModal.style.display = 'flex';
+        detailsModal.classList.add('active'); // Usar la clase 'active' para mostrar el modal
     };
 
     const hideDetailsModal = () => {
-        detailsModal.style.display = 'none';
+        detailsModal.classList.remove('active'); // Usar la clase 'active' para ocultar el modal
     };
 
     closeDetailsModalBtn.addEventListener('click', hideDetailsModal);

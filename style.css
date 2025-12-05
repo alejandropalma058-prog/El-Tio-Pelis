@@ -442,9 +442,13 @@ main {
     height: 100%; /* Alto completo */
     overflow: auto; /* Habilitar scroll si es necesario */
     background-color: rgba(0,0,0,0.7); /* Fondo semi-transparente */
-    display: flex;
+    display: none; /* Oculto por defecto */
     justify-content: center;
     align-items: center;
+}
+
+.modal.active { /* Clase para mostrar el modal con JS */
+    display: flex;
 }
 
 .modal-content {
